@@ -3,3 +3,5 @@
 1. Detect syntax error of TARGOS and output line number
 2. Add constraints to output z3z
 3. Binary representation of states and mapping back
+4. Support ec, ec.itf
+5. Support transition weight

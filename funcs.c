@@ -6,6 +6,7 @@ GPtrArray *partab;  // automaton table for PAR;
 GPtrArray *outtab;  // output table;
 GPtrArray *intab;  // input table;
 
+extern void ecNode(FILE *f);
 extern void ecitfInputs(FILE *f);
 extern void ecitfOutputs(FILE *f);
 
@@ -560,6 +561,19 @@ int main(int argc, char *argv[])
     }
 
   z3zFileOutput(z3zfile);
+
+  FILE* ecfile;
+  //  if (!(itffile = fopen(argv[3], "w")))
+  //    {
+      if (!(ecfile=fopen("out.ec", "w")))
+	{
+	  perror("open output file error\n");
+	  return(1);
+	}
+      //    }
+
+      ecNode(ecfile);
+
 
   FILE* itffile;
   //  if (!(itffile = fopen(argv[3], "w")))

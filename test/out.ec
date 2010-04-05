@@ -1,0 +1,11 @@
+node system(req1 : bool;
+go1 : bool;
+stop1 : bool;
+G2 : bool) returns (gnt1 : bool;
+suiv_I_de_M1_0 : bool;
+suiv_W_de_M1_0 : bool;
+suiv_C_de_M1_0 : bool;
+suiv_G_de_M1_0 : bool;
+suiv_I_de_obs_1 : bool;
+suiv_E_de_obs_1 : bool;
+suiv_memoire_de_gnt1 : bool);
