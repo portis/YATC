@@ -1,15 +1,5 @@
-#include "types.h"
-#include <string.h>
 
-#define GET_INPUT(intab, i) ((input *)g_ptr_array_index(intab, i))
-#define GET_OUTPUT(outtab, i) ((output *)g_ptr_array_index(outtab, i))
-#define GET_PAR(partab, i) ((automaton *)g_ptr_array_index(partab, i))
-#define GET_STATE(sttab, i) ((state *)g_ptr_array_index(sttab, i))
-#define GET_TRAN(trtab, i) ((tran *)g_ptr_array_index(trtab, i))
-
-extern GPtrArray *intab;
-extern GPtrArray *outtab;
-extern GPtrArray *partab;
+#include "ecitf.h"
 
 
 void ecNode(FILE* f)

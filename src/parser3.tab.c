@@ -71,6 +71,7 @@
 #line 1 "parser3.y"
 
 #include <stdio.h>
+#include <glib.h>
 #include "types.h"
   //#define YYSTYPE char *
 #define YYDEBUG 1
@@ -110,7 +111,7 @@
 
 
 /* Line 189 of yacc.c  */
-#line 114 "parser3.tab.c"
+#line 115 "parser3.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -180,7 +181,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 184 "parser3.tab.c"
+#line 185 "parser3.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -192,7 +193,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 196 "parser3.tab.c"
+#line 197 "parser3.tab.c"
 
 #ifdef short
 # undef short
@@ -1762,7 +1763,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 1766 "parser3.tab.c"
+#line 1767 "parser3.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);

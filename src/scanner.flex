@@ -2,10 +2,13 @@
 %x COMMENT
 
 %{
-#include "parser1.tab.h"
+
+#include <glib.h>
+#include "parser3.tab.h"
 
 #define _POSIX_SOURCE 1
 #include <stdio.h>
+
 
 //extern YYSTYPE yylval;
 char *p;

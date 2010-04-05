@@ -1,5 +1,6 @@
 %{
 #include <stdio.h>
+#include <glib.h>
 #include "types.h"
   //#define YYSTYPE char *
 #define YYDEBUG 1
@@ -37,7 +38,6 @@
  int yylex(void);
  int yyerror(char *s);
 %}
-
 
 
 %union

@@ -556,14 +556,17 @@ char *yytext;
 #line 1 "scanner.flex"
 
 #line 5 "scanner.flex"
-#include "parser1.tab.h"
+
+#include <glib.h>
+#include "parser3.tab.h"
 
 #define _POSIX_SOURCE 1
 #include <stdio.h>
 
+
 //extern YYSTYPE yylval;
 char *p;
-#line 567 "lex.yy.c"
+#line 570 "lex.yy.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -751,10 +754,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 13 "scanner.flex"
+#line 16 "scanner.flex"
 
 
-#line 758 "lex.yy.c"
+#line 761 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -849,173 +852,173 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 15 "scanner.flex"
+#line 18 "scanner.flex"
 { return T_TARGOS; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 16 "scanner.flex"
+#line 19 "scanner.flex"
 { return T_END_TARGOS; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 17 "scanner.flex"
+#line 20 "scanner.flex"
 { return T_AUTOMATON; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 18 "scanner.flex"
+#line 21 "scanner.flex"
 { return T_STATES; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 19 "scanner.flex"
+#line 22 "scanner.flex"
 { return T_INIT; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 20 "scanner.flex"
+#line 23 "scanner.flex"
 { return T_TRANS; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 21 "scanner.flex"
+#line 24 "scanner.flex"
 { return T_FROM; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 22 "scanner.flex"
+#line 25 "scanner.flex"
 { return T_TO; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 23 "scanner.flex"
+#line 26 "scanner.flex"
 { return T_WITH; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 24 "scanner.flex"
+#line 27 "scanner.flex"
 { return T_PAR; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 25 "scanner.flex"
+#line 28 "scanner.flex"
 { return T_RAFF; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 26 "scanner.flex"
+#line 29 "scanner.flex"
 { return T_ENDPAR; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 27 "scanner.flex"
+#line 30 "scanner.flex"
 { return T_PROCESS; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 28 "scanner.flex"
+#line 31 "scanner.flex"
 { return T_SYSTEM; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 29 "scanner.flex"
+#line 32 "scanner.flex"
 { return('=');}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 30 "scanner.flex"
+#line 33 "scanner.flex"
 {return(';');}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 31 "scanner.flex"
+#line 34 "scanner.flex"
 {return(':'); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 32 "scanner.flex"
+#line 35 "scanner.flex"
 { return(','); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 33 "scanner.flex"
+#line 36 "scanner.flex"
 { return('('); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 34 "scanner.flex"
+#line 37 "scanner.flex"
 { return(')'); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 35 "scanner.flex"
+#line 38 "scanner.flex"
 { return('['); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 36 "scanner.flex"
+#line 39 "scanner.flex"
 { return(']'); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 37 "scanner.flex"
+#line 40 "scanner.flex"
 { return('*'); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 38 "scanner.flex"
+#line 41 "scanner.flex"
 { return T_TRUE; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 39 "scanner.flex"
+#line 42 "scanner.flex"
 { return T_FALSE; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 40 "scanner.flex"
+#line 43 "scanner.flex"
 { return T_AND; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 41 "scanner.flex"
+#line 44 "scanner.flex"
 { return T_OR; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 42 "scanner.flex"
+#line 45 "scanner.flex"
 { return T_NOT; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 43 "scanner.flex"
+#line 46 "scanner.flex"
 { return T_IN; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 44 "scanner.flex"
+#line 47 "scanner.flex"
 { return T_OUT; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 45 "scanner.flex"
+#line 48 "scanner.flex"
 { return T_BOOL; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 46 "scanner.flex"
+#line 49 "scanner.flex"
 { return T_PRE; }
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 47 "scanner.flex"
+#line 50 "scanner.flex"
 
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 49 "scanner.flex"
+#line 52 "scanner.flex"
 {p=(char *)calloc(strlen(yytext)+1,sizeof(char));
                        strcpy(p,yytext);
                        yylval.text=p;
@@ -1024,15 +1027,15 @@ YY_RULE_SETUP
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 54 "scanner.flex"
+#line 57 "scanner.flex"
 
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 56 "scanner.flex"
+#line 59 "scanner.flex"
 ECHO;
 	YY_BREAK
-#line 1036 "lex.yy.c"
+#line 1039 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -2043,7 +2046,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 56 "scanner.flex"
+#line 59 "scanner.flex"
 
 
 

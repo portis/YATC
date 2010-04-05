@@ -1,9 +1,5 @@
-#include "types.h"
 #include <string.h>
-
-extern GPtrArray *intab;
-extern GPtrArray *outtab;
-extern GPtrArray *partab;
+#include "z3z.h"
 
 void z3zDeclare(FILE* file)
 {
@@ -199,7 +195,7 @@ void z3zInit(FILE* file)
 
 }
 
-void z3zEvol1(FILE* file)
+void z3zEvol(FILE* file)
 {
   fprintf(file, "%s", "evolutions: [\n\n");
 
@@ -505,3 +501,17 @@ void z3zLibre(FILE* file)
 {
   fprintf(file, "%s", "cond_libres: [\n\n\n      ];\n\n");
 }
+
+void z3zFileOutput(FILE* file)
+{
+  z3zDeclare(file);
+  z3zOutput(file);
+  z3zConditions(file);
+  z3zEtats(file); 
+  z3zInit(file);
+  z3zEvol(file);
+  z3zCons(file);
+  z3zCont(file);
+  z3zLibre(file);
+}
+

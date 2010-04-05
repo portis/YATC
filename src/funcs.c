@@ -1,16 +1,12 @@
 #include "types.h"
 #include <string.h>
 
-GPtrArray *autotab;  // automaton table;
-GPtrArray *partab;  // automaton table for PAR;
-GPtrArray *outtab;  // output table;
-GPtrArray *intab;  // input table;
+extern GPtrArray *autotab;  // automaton table;
+extern GPtrArray *partab;  // automaton table for PAR;
+extern GPtrArray *outtab;  // output table;
+extern GPtrArray *intab;  // input table;
 
-extern void ecNode(FILE *f);
-extern void ecitfInputs(FILE *f);
-extern void ecitfOutputs(FILE *f);
 
-state *automaton_find_state(automaton *a, gchar *sname);
 
 /* input manipulations */
 input *input_find(gchar *name)
@@ -203,19 +199,6 @@ state *state_new(gchar *name, gboolean init)
   return tmp;
 }
 
-/* state *state_dup(state *s, gchar *postfix) */
-/* { */
-/*   state *tmp = (state *)malloc(sizeof(state)); */
-/*   gchar *newname = g_strdup(s->name); */
-/*   newname = strcat(newname, postfix); */
-/*   tmp->name = newname; */
-/*   tmp->init = s->init; */
-/*   tmp->frtr = g_ptr_array_new(); */
-/*   tmp->totr = g_ptr_array_new(); */
-
-/*   return tmp; */
-
-/* } */
 
 state *state_dup2(state *s)
 {
@@ -368,7 +351,6 @@ static void automaton_reorder_trans(automaton *a)
 
 void tran_add_postfix(tran *t, int i)
 {
-  //  GString *str = g_string_new("condition_de_");
   char *str = (char *)calloc(1000, 1);
 
   sprintf(str, "condition_de_%s", t->from->name);
@@ -524,95 +506,4 @@ void SysInit()
   partab = g_ptr_array_new();
 }
 
-
-void z3zFileOutput(FILE* file)
-{
-
-  z3zDeclare(file);
-  z3zOutput(file);
-  z3zConditions(file);
-  z3zEtats(file); 
-  z3zInit(file);
-  z3zEvol1(file);
-  z3zCons(file);
-  z3zCont(file);
-  z3zLibre(file);
-}
-
-extern void yyparse();
-extern int yydebug;
-extern FILE* yyin;
-
-int main(int argc, char *argv[])
-{
-
-  SysInit();
-  //    yydebug=1;
-
-  if (!(yyin = fopen(argv[1], "r")))
-    {
-      if (!(yyin = fopen("M1p.targos", "r")))
-	{
-	  perror("M1p.targos not found!");
-	  return(1);
-	}
-    }
-
-  yyparse();
-
-  autotab_reorder();
-  //      autotab_print();
-  //      outtab_print(); 
-  intab_reorder();
-  outtab_reorder();
-  outtab_subout_reorder();
-  //      intab_print(); 
-
-  partab_reorder();
-  partab_add_postfix();
-
-  outtab_update_subexp();
-
-  //      partab_print();
-
-  FILE* z3zfile;
-  if (!(z3zfile = fopen(argv[2], "w")))
-    {
-      if (!(z3zfile=fopen("out.z3z", "w")))
-	{
-	  perror("open output file error\n");
-	  return(1);
-	}
-    }
-
-  z3zFileOutput(z3zfile);
-
-  FILE* ecfile;
-  //  if (!(itffile = fopen(argv[3], "w")))
-  //    {
-      if (!(ecfile=fopen("out.ec", "w")))
-	{
-	  perror("open output file error\n");
-	  return(1);
-	}
-      //    }
-
-      ecNode(ecfile);
-
-
-  FILE* itffile;
-  //  if (!(itffile = fopen(argv[3], "w")))
-  //    {
-      if (!(itffile=fopen("out.ec.itf", "w")))
-	{
-	  perror("open output file error\n");
-	  return(1);
-	}
-      //    }
-
-  ecitfInputs(itffile);
-  ecitfOutputs(itffile);
-
-  return 0;
-}
 
