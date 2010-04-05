@@ -220,7 +220,7 @@ void z3zEvol(FILE* file)
 	      if (st1 == st2)
 		{
 		  char *strtmp = (char *)calloc(30000, 1);
-		  strtmp[0] = '\0';
+
 		  int numor = 0;
 		  
 		  for (int l = 0; l < at->trtab->len; l++)

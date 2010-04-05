@@ -1,22 +1,15 @@
 Inputs:
-r_1
-a_1_1
-a_1_2
-failure_1i
-failure_2i
-failure_3i
-t_1
-chk_1
+req1
+go1
+stop1
+G2
 
 Outputs:
-ttt
-I_de_tache_1_0 : true
-R_de_tache_1_0 : false
-A_1_de_tache_1_0 : false
-A_2_de_tache_1_0 : false
-B_1_de_tache_1_0 : false
-A_3_de_tache_1_0 : false
-B_2_de_tache_1_0 : false
-B_3_de_tache_1_0 : false
-T_de_tache_1_0 : false
-memoire_de_ttt : false
+gnt1
+I_de_M1_0 : true
+W_de_M1_0 : false
+C_de_M1_0 : false
+G_de_M1_0 : false
+I_de_obs_1 : true
+E_de_obs_1 : false
+memoire_de_gnt1 : false
