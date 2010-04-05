@@ -1,0 +1,5 @@
+
+
+1. Detect syntax error of TARGOS and output line number
+2. Add constraints to output z3z
+3. Binary representation of states and mapping back
