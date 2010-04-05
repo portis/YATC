@@ -58,14 +58,6 @@ typedef struct subout {
 } subout;
 
 
-/* typedef struct output { */
-/*   char *name; */
-/*   enum valtype type; */
-/*   char *def_val; */
-/*   char *expr; */
-/*   subout *exps[1000]; */
-/* } output; */
-
 typedef struct output {
   gchar *name;
   gboolean def_val;

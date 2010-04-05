@@ -67,7 +67,7 @@ condition_de_C_de_M1_0_vers_G_de_M1_0_3 else if (G_de_M1_0) then not (condition_
    suiv_I_de_obs_1=if (I_de_obs_1) then not (condition_de_I_de_obs_1_vers_E_de_obs_1_0) else I_de_obs_1;
    suiv_E_de_obs_1=if (I_de_obs_1) then condition_de_I_de_obs_1_vers_E_de_obs_1_0 else if (E_de_obs_1) then true else E_de_obs_1;
    suiv_memoire_de_gnt1=gnt1;
-   memoire_de_gnt1=true->pre(suiv_memoire_de_gnt1);
+   memoire_de_gnt1=false->pre(suiv_memoire_de_gnt1);
    
 tel;
 

@@ -30,7 +30,7 @@ TRANS
 
 PROCESS system[in(req1, *go1, stop1, *G2 : bool),
 %PROCESS system[in(req1, *go1, stop1, *gnt2 : bool),
-	       out(gnt1=true : bool) ]
+	       out(gnt1=false : bool) ]
                
 
 PAR

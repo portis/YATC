@@ -52,15 +52,14 @@ void z3zOutput(FILE* file)
   for (int i = 0; i < outtab->len; i++)
     {
       output *ot = (output *)g_ptr_array_index(outtab, i);
-      fprintf(file, "%s", ot->name);
-      fprintf(file, "%s", " : ");
+      fprintf(file, "%s : ", ot->name);
 
       if (ot->exprs->len > 1)
 	{
       g_string_printf(str, "(memoire_de_%s)", ot->name);
 
-      for (int j = 0; j < ot->exprs->len; j++)
-      //for (int j = ot->exprs->len-1; j >= 0; j--)
+      //      for (int j = 0; j < ot->exprs->len; j++)
+      for (int j = ot->exprs->len-1; j >= 0; j--)
 	{
 	  subout *sot=(subout *)g_ptr_array_index(ot->exprs, j);	  
   	  g_string_printf(stm, "%s", str->str);
@@ -203,8 +202,6 @@ void z3zInit(FILE* file)
 void z3zEvol1(FILE* file)
 {
   fprintf(file, "%s", "evolutions: [\n\n");
-
-  //  fprintf(file, "%s", "\n"); 
 
   GString *str1 = g_string_sized_new(1000);
   GString *str2 = g_string_sized_new(1000);

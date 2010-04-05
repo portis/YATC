@@ -12,4 +12,4 @@ C_de_M1_0 : false
 G_de_M1_0 : false
 I_de_obs_1 : true
 E_de_obs_1 : false
-memoire_de_gnt1 : true
+memoire_de_gnt1 : false

@@ -122,11 +122,34 @@ void output_add2(gchar *name, gboolean val)
     }
 }
 
+void outtab_subout_reorder()
+{
+  for (int i = 0; i < outtab->len; i++)
+    {
+      output *ot = (output *)g_ptr_array_index(outtab, i);
+      for (int j = 1; j < ot->exprs->len/2; j++)
+	{
+	  gpointer p = g_ptr_array_index(ot->exprs, j);
+	  g_ptr_array_index(ot->exprs, j) = g_ptr_array_index(ot->exprs, ot->exprs->len-j);
+	  g_ptr_array_index(ot->exprs, ot->exprs->len-j) = p;
+	}
+    }
+}
 
 void output_print(output *o)
 {
   printf("Output: %s\n", o->name);
   g_ptr_array_foreach(o->exprs, (GFunc)subout_print, NULL);
+}
+
+void outtab_reorder()
+{
+  for (int i = 0; i < outtab->len/2; i++)
+    {
+      gpointer p = g_ptr_array_index(outtab, i);
+      g_ptr_array_index(outtab, i) = g_ptr_array_index(outtab, outtab->len-i-1);
+      g_ptr_array_index(outtab, outtab->len-i-1) = p;
+    }
 }
 
 void outtab_update_subexp()
@@ -348,7 +371,7 @@ void tran_add_postfix(tran *t, int i)
   //  GString *str = g_string_new("condition_de_");
   char *str = (char *)calloc(1000, 1);
 
-  sprintf(str, "%s", t->from->name);
+  sprintf(str, "condition_de_%s", t->from->name);
   str = strcat(str, "_vers_");
   str = strcat(str, t->to->name);
 
@@ -541,6 +564,8 @@ int main(int argc, char *argv[])
   //      autotab_print();
   //      outtab_print(); 
   intab_reorder();
+  outtab_reorder();
+  outtab_subout_reorder();
   //      intab_print(); 
 
   partab_reorder();
