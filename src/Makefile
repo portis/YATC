@@ -4,7 +4,7 @@ CC = clang -O2 -std=c99 -D_POSIX_SOURCE
 CFLAGS = `pkg-config --cflags glib-2.0`
 LIBS = `pkg-config --libs glib-2.0` 
 #BISON = bison -d -t -v
-BISON = bison -d -v
+BISON = bison -d
 
 SOURCES = main.c lex.yy.c parser.tab.c funcs.c z3z.c ecitf.c
 HEADERS = *.h
