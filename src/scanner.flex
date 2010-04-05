@@ -4,7 +4,7 @@
 %{
 
 #include <glib.h>
-#include "parser3.tab.h"
+#include "parser.tab.h"
 
 #define _POSIX_SOURCE 1
 #include <stdio.h>

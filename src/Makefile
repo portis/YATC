@@ -3,8 +3,10 @@ CC = clang -O2 -std=c99 -D_POSIX_SOURCE
 #CC = gcc
 CFLAGS = `pkg-config --cflags glib-2.0`
 LIBS = `pkg-config --libs glib-2.0` 
+#BISON = bison -d -t -v
+BISON = bison -d -v
 
-SOURCES = main.c lex.yy.c parser3.tab.c funcs.c z3zOut4.c ecitf.c
+SOURCES = main.c lex.yy.c parser.tab.c funcs.c z3z.c ecitf.c
 HEADERS = *.h
 
 BIN = yatc
@@ -21,16 +23,16 @@ lex.yy.o : lex.yy.c
 lex.yy.c : scanner.flex
 	flex scanner.flex
 
-parser3.tab.o : parser3.tab.c types.h
+parser.tab.o : parser.tab.c types.h
 	$(CC) $(CFLAGS) -c $^
 
-parser3.tab.c :  parser3.y
-	bison -d -t -v parser3.y
+parser.tab.c :  parser.y
+	$(BISON) parser.y
 
 funcs.o : funcs.c types.h
 	$(CC) $(CFLAGS) -c $^
 
-z3zOut.o : z3zOut4.c types.h
+z3z.o : z3z.c z3z.h
 	$(CC) $(CFLAGS) -c $^
 
 ecitf.o : ecitf.c types.h
