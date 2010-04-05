@@ -6,6 +6,8 @@ GPtrArray *partab;  // automaton table for PAR;
 GPtrArray *outtab;  // output table;
 GPtrArray *intab;  // input table;
 
+extern void ecitfInputs(FILE *f);
+extern void ecitfOutputs(FILE *f);
 
 state *automaton_find_state(automaton *a, gchar *sname);
 
@@ -102,6 +104,19 @@ void output_add(gchar *name)
       outtmp->name = g_strdup(name);
       outtmp->exprs = g_ptr_array_new();
       
+      g_ptr_array_add(outtab, outtmp);
+    }
+}
+
+void output_add2(gchar *name, gboolean val)
+{
+
+  if (output_find(name)==NULL)
+    {
+      output * outtmp = (output *)calloc(sizeof(output), 1);
+      outtmp->name = g_strdup(name);
+      outtmp->exprs = g_ptr_array_new();
+      outtmp->def_val = val;
       g_ptr_array_add(outtab, outtmp);
     }
 }
@@ -534,17 +549,31 @@ int main(int argc, char *argv[])
 
   //      partab_print();
 
-  FILE* file;
-  if (!(file = fopen(argv[2], "w")))
+  FILE* z3zfile;
+  if (!(z3zfile = fopen(argv[2], "w")))
     {
-      if (!(file=fopen("out.z3z", "w")))
+      if (!(z3zfile=fopen("out.z3z", "w")))
 	{
 	  perror("open output file error\n");
 	  return(1);
 	}
     }
 
-  z3zFileOutput(file);
+  z3zFileOutput(z3zfile);
+
+  FILE* itffile;
+  //  if (!(itffile = fopen(argv[3], "w")))
+  //    {
+      if (!(itffile=fopen("out.ec.itf", "w")))
+	{
+	  perror("open output file error\n");
+	  return(1);
+	}
+      //    }
+
+  ecitfInputs(itffile);
+  ecitfOutputs(itffile);
+
   return 0;
 }
 

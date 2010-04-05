@@ -18,7 +18,8 @@
  /* newly added */
  extern void input_add(gchar *name, gboolean cont);
  extern output *output_find(gchar *name);
- extern void output_add(gchar *name); //, gboolean def);
+ extern void output_add(gchar *name); 
+ extern void output_add2(gchar *name, gboolean def);
  extern subout *subout_new(state *st, automaton *at, gchar *expr);
  extern state *state_new(gchar *name, gboolean init);
  extern automaton *automaton_new(gchar *name);
@@ -228,8 +229,7 @@ void addTran(char *f, char *t, char *e)
 
 static void addOutput(char *f, gboolean def)
 {
-  //  output_add(f, def);
-  output_add(f);
+  output_add2(f, def);
 }
 
 static GPtrArray *findOutput(char*outname, char *exp)

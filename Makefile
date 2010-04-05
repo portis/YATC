@@ -4,8 +4,8 @@ CC = clang -O2 -std=c99 -D_POSIX_SOURCE
 CFLAGS = `pkg-config --cflags glib-2.0`
 LIBS = `pkg-config --libs glib-2.0` 
 
-all :   funcs.o types.h z3zOut4.o parser3.tab.o lex.yy.o
-	$(CC) $(CFLAGS) $(LIBS) -o yatc funcs.o z3zOut4.o parser3.tab.o lex.yy.o -lfl
+all :   funcs.o types.h z3zOut4.o parser3.tab.o lex.yy.o ecitf.o
+	$(CC) $(CFLAGS) $(LIBS) -o yatc funcs.o z3zOut4.o parser3.tab.o lex.yy.o ecitf.o -lfl
 
 lex.yy.c : scanner.flex
 	flex scanner.flex
@@ -24,3 +24,6 @@ funcs.o : funcs.c types.h
 
 z3zOut.o : z3zOut4.c types.h
 	$(CC) $(CFLAGS) $(LIBS) -c z3zOut4.c
+
+ecitf.o : ecitf.c types.h
+	$(CC) $(CFLAGS) $(LIBS) -c ecitf.c

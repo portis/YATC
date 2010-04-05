@@ -1,0 +1,117 @@
+declare(
+      req1,
+      go1,
+      stop1,
+      G2,
+      I_de_M1_0,
+      W_de_M1_0,
+      C_de_M1_0,
+      G_de_M1_0,
+      I_de_obs_1,
+      E_de_obs_1,
+      memoire_de_gnt1
+   );
+
+gnt1 : ((-1) when I_de_M1_0) default (((-1) when W_de_M1_0) default ((((go1 and req1)) when C_de_M1_0) default (((1
+) when G_de_M1_0) default (memoire_de_gnt1))));
+I_de_M1_0_Choix : 1;
+W_de_M1_0_Choix : -1;
+C_de_M1_0_Choix : -1;
+G_de_M1_0_Choix : -1;
+condition_de_I_de_M1_0_vers_W_de_M1_0_0 : (((req1 and not (go1))) when I_de_M1_0) default (-1);
+condition_de_I_de_M1_0_vers_G_de_M1_0_1 : (((req1 and go1)) when I_de_M1_0) default (-1);
+condition_de_W_de_M1_0_vers_C_de_M1_0_2 : ((go1) when W_de_M1_0) default (-1);
+condition_de_C_de_M1_0_vers_G_de_M1_0_3 : ((not (stop1)) when C_de_M1_0) default (-1);
+condition_de_C_de_M1_0_vers_I_de_M1_0_4 : ((stop1) when C_de_M1_0) default (-1);
+condition_de_G_de_M1_0_vers_I_de_M1_0_5 : ((stop1) when G_de_M1_0) default (-1);
+I_de_obs_1_Choix : 1;
+E_de_obs_1_Choix : -1;
+condition_de_I_de_obs_1_vers_E_de_obs_1_0 : (((gnt1 and G2)) when I_de_obs_1) default (-1);
+condition_de_E_de_obs_1_vers_E_de_obs_1_1 : ((1) when E_de_obs_1) default (-1);
+
+conditions: [
+      req1,
+      go1,
+      stop1,
+      G2
+   ];
+
+etats: [
+   
+         I_de_M1_0,
+         W_de_M1_0,
+         C_de_M1_0,
+         G_de_M1_0,
+         I_de_obs_1,
+         E_de_obs_1,
+         memoire_de_gnt1
+      ];
+
+initialisations: [
+   
+         I_de_M1_0 = 1,
+         W_de_M1_0 = -1,
+         C_de_M1_0 = -1,
+         G_de_M1_0 = -1,
+         I_de_obs_1 = 1,
+         E_de_obs_1 = -1,
+         memoire_de_gnt1 = 1
+      ];
+
+evolutions: [
+   
+         ((not ((condition_de_I_de_M1_0_vers_W_de_M1_0_0 or condition_de_I_de_M1_0_vers_G_de_M1_0_1))) when I_de_M1_0) default (((
+condition_de_C_de_M1_0_vers_I_de_M1_0_4) when C_de_M1_0) default (((condition_de_G_de_M1_0_vers_I_de_M1_0_5
+) when G_de_M1_0) default (I_de_M1_0))),
+         ((condition_de_I_de_M1_0_vers_W_de_M1_0_0) when I_de_M1_0) default (((not (condition_de_W_de_M1_0_vers_C_de_M1_0_2)
+) when W_de_M1_0) default (W_de_M1_0)),
+         ((condition_de_W_de_M1_0_vers_C_de_M1_0_2) when W_de_M1_0) default (((not ((condition_de_C_de_M1_0_vers_G_de_M1_0_3 or 
+condition_de_C_de_M1_0_vers_I_de_M1_0_4))) when C_de_M1_0) default (C_de_M1_0)),
+         ((condition_de_I_de_M1_0_vers_G_de_M1_0_1) when I_de_M1_0) default (((condition_de_C_de_M1_0_vers_G_de_M1_0_3
+) when C_de_M1_0) default (((not (condition_de_G_de_M1_0_vers_I_de_M1_0_5)) when G_de_M1_0) default (G_de_M1_0))),
+         ((not (condition_de_I_de_obs_1_vers_E_de_obs_1_0)) when I_de_obs_1) default (I_de_obs_1),
+         ((condition_de_I_de_obs_1_vers_E_de_obs_1_0) when I_de_obs_1) default (((1) when E_de_obs_1) default (E_de_obs_1)),
+         gnt1
+      ];
+
+contraintes: [
+   
+         req1^2=1,
+         go1^2=1,
+         stop1^2=1,
+         G2^2=1,
+         gnt1^2=1,
+         I_de_M1_0_Choix^2=1,
+         W_de_M1_0_Choix^2=1,
+         C_de_M1_0_Choix^2=1,
+         G_de_M1_0_Choix^2=1,
+         condition_de_I_de_M1_0_vers_W_de_M1_0_0^2=1,
+         condition_de_I_de_M1_0_vers_G_de_M1_0_1^2=1,
+         condition_de_W_de_M1_0_vers_C_de_M1_0_2^2=1,
+         condition_de_C_de_M1_0_vers_G_de_M1_0_3^2=1,
+         condition_de_C_de_M1_0_vers_I_de_M1_0_4^2=1,
+         condition_de_G_de_M1_0_vers_I_de_M1_0_5^2=1,
+         I_de_obs_1_Choix^2=1,
+         E_de_obs_1_Choix^2=1,
+         condition_de_I_de_obs_1_vers_E_de_obs_1_0^2=1,
+         condition_de_E_de_obs_1_vers_E_de_obs_1_1^2=1,
+         I_de_M1_0^2=1,
+         W_de_M1_0^2=1,
+         C_de_M1_0^2=1,
+         G_de_M1_0^2=1,
+         I_de_obs_1^2=1,
+         E_de_obs_1^2=1,
+         memoire_de_gnt1^2=1
+      ];
+
+controlables: [
+   
+         go1,
+         G2
+      ];
+
+cond_libres: [
+   
+         
+      ];
+

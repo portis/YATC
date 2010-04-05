@@ -46,8 +46,6 @@ for (int i = 0; i < outtab->len; i++)
 
 void z3zOutput(FILE* file)
 {
-  //  gchar *str = (char *)malloc(100000);
-  //  gchar *stm = (char *)malloc(100000);
 
   GString *str = g_string_new("");
   GString *stm = g_string_new("");
@@ -57,6 +55,8 @@ void z3zOutput(FILE* file)
       fprintf(file, "%s", ot->name);
       fprintf(file, "%s", " : ");
 
+      if (ot->exprs->len > 1)
+	{
       g_string_printf(str, "(memoire_de_%s)", ot->name);
 
       for (int j = 0; j < ot->exprs->len; j++)
@@ -75,17 +75,14 @@ void z3zOutput(FILE* file)
 	}
 
       fprintf(file, "%s", str->str+1);
-
       fseek(file, -1, SEEK_CUR);
+	}
+      else
+	fprintf(file, "%s", ot->def_val ? "1" : "-1");
+
+      //     fseek(file, -1, SEEK_CUR);
       fprintf(file, ";\n");
-
-  /*     str[0] = '\0'; */
-  /*     stm[0] = '\0'; */
-	    
     }
-
-  /* free(str); */
-  /* free(stm); */
 
 
   for (int i = 0; i < partab->len; i++)
@@ -194,9 +191,8 @@ void z3zInit(FILE* file)
   for (int i = 0; i < outtab->len; i++)
     {
       output *ot = (output *)g_ptr_array_index(outtab, i);
-      fprintf(file, "%s", "\n      memoire_de_");
-      fprintf(file, "%s", ot->name);
-      fprintf(file, "%s", " = -1,");
+      fprintf(file, "\n      memoire_de_%s = ", ot->name);
+      fprintf(file, "%s,", ot->def_val ? "1" : "-1");
     }
 
   fseek(file, -1, SEEK_CUR);

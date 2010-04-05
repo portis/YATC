@@ -1,0 +1,15 @@
+Inputs:
+req1
+go1
+stop1
+G2
+
+Outputs:
+gnt1
+I_de_M1_0 : true
+W_de_M1_0 : false
+C_de_M1_0 : false
+G_de_M1_0 : false
+I_de_obs_1 : true
+E_de_obs_1 : false
+memoire_de_gnt1 : true

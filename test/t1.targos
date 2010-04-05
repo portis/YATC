@@ -1,0 +1,70 @@
+TARGOS
+
+AUTOMATON tache_1
+STATES
+        I        init            [ ]
+        R                        [ ]
+        A_1                      [ ]
+        A_2                      [ ]
+        A_3                      [ ]
+        B_1                      [ ]
+        B_2                      [ ]
+        B_3                      [ ]
+        T                        [ ]
+
+TRANS
+        FROM I TO R WITH rien [r_1]
+
+        FROM R TO A_1 WITH rien0      [  a_1_1 and not a_1_2 ]
+        FROM R TO A_2 WITH rien0      [  not a_1_1 and a_1_2 ]
+        FROM R TO A_3 WITH rien0      [ ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2)) ]
+
+        FROM A_1 TO A_2 WITH rien0    [ not a_1_1 and a_1_2 and not chk_1 and failure_1i]
+        FROM A_1 TO A_3 WITH rien0    [ ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2)) and not chk_1 and failure_1i]
+
+        FROM A_2 TO A_1 WITH rien0    [ a_1_1 and not a_1_2 and not chk_1 and failure_2i]
+        FROM A_2 TO A_3 WITH rien0    [ ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2)) and not chk_1 and failure_2i]
+
+        FROM A_3 TO A_1 WITH rien0    [ a_1_1 and not a_1_2 and not chk_1 and failure_3i]
+        FROM A_3 TO A_2 WITH rien0    [ not a_1_1 and a_1_2 and not chk_1 and failure_3i]
+
+  
+
+        FROM A_1 TO B_1  WITH rien0      [ chk_1 and (a_1_1 and not a_1_2)]
+        FROM A_1 TO B_2  WITH rien0      [ chk_1 and (not a_1_1 and a_1_2)]
+        FROM A_1 TO B_3  WITH rien0      [ chk_1 and ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2)) ]
+
+        FROM A_2 TO B_1  WITH rien0      [ chk_1 and (a_1_1 and not a_1_2)]
+        FROM A_2 TO B_2  WITH rien0      [ chk_1 and (not a_1_1 and a_1_2)]
+        FROM A_2 TO B_3  WITH rien0      [ chk_1 and ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2))]
+
+        FROM A_3 TO B_1  WITH rien0      [ chk_1 and (a_1_1 and not a_1_2)]
+        FROM A_3 TO B_2  WITH rien0      [ chk_1 and (not a_1_1 and a_1_2)]
+        FROM A_3 TO B_3  WITH rien0      [ chk_1 and ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2)) ] 
+
+
+
+        FROM B_1 TO T  WITH rien0      [ t_1 ]
+        FROM B_2 TO T  WITH rien0      [ t_1 ]
+        FROM B_3 TO T  WITH rien0      [ t_1 ]
+
+
+        FROM B_1 TO B_2 WITH rien0    [ not a_1_1 and a_1_2 and not t_1 and failure_1i]
+        FROM B_1 TO B_3 WITH rien0    [ ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2)) and not t_1 and failure_1i]
+        FROM B_2 TO B_1 WITH rien0    [ a_1_1 and not a_1_2 and not t_1 and failure_2i]
+        FROM B_2 TO B_3 WITH rien0    [ ((not a_1_1 and not a_1_2) or (a_1_1 and a_1_2))  and not t_1 and failure_2i]
+        FROM B_3 TO B_1 WITH rien0    [ a_1_1 and not a_1_2 and not t_1 and failure_3i]
+        FROM B_3 TO B_2 WITH rien0    [ not a_1_1 and a_1_2 and not t_1 and failure_3i]
+
+
+
+
+PROCESS system[ in( r_1, *a_1_1, *a_1_2, *failure_1i, *failure_2i, *failure_3i, 
+                     t_1, chk_1  : bool),
+                 out(  ttt=false  : bool ) ]
+
+PAR
+        RAFF tache_1
+ENDPAR
+ENDTARGOS
+

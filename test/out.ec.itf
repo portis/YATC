@@ -1,0 +1,22 @@
+Inputs:
+r_1
+a_1_1
+a_1_2
+failure_1i
+failure_2i
+failure_3i
+t_1
+chk_1
+
+Outputs:
+ttt
+I_de_tache_1_0 : true
+R_de_tache_1_0 : false
+A_1_de_tache_1_0 : false
+A_2_de_tache_1_0 : false
+B_1_de_tache_1_0 : false
+A_3_de_tache_1_0 : false
+B_2_de_tache_1_0 : false
+B_3_de_tache_1_0 : false
+T_de_tache_1_0 : false
+memoire_de_ttt : false

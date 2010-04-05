@@ -1,0 +1,40 @@
+TARGOS
+
+AUTOMATON M1
+
+STATES
+	I   init [ gnt1=false; ]
+	W   	 [ gnt1=false; ]
+        C        [ gnt1 = go1 and req1; ]
+	G	 [ gnt1=true; ]
+
+TRANS
+	FROM I TO W WITH rien [ req1 and not go1 ]
+	FROM I TO G WITH rien [ req1 and go1 ]
+        FROM W TO C WITH rien [ go1 ]
+        FROM C TO G WITH rien [ not stop1 ]
+        FROM C TO I WITH rien [ stop1 ]
+	FROM G TO I WITH rien [ stop1 ]
+
+AUTOMATON obs
+
+STATES
+	I   init []
+	E   	 []
+
+TRANS
+	FROM I TO E WITH rien [ gnt1 and G2 ]
+%	FROM I TO E WITH rien [ gnt1 and gnt2 ]
+	FROM E TO E WITH rien [ true ]
+
+
+PROCESS system[in(req1, *go1, stop1, *G2 : bool),
+%PROCESS system[in(req1, *go1, stop1, *gnt2 : bool),
+	       out(gnt1=true : bool) ]
+               
+
+PAR
+RAFF M1
+RAFF obs
+ENDPAR
+ENDTARGOS
