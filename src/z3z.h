@@ -15,6 +15,7 @@ void z3zEtats(FILE* file);
 void z3zInit(FILE* file);
 void z3zEvol(FILE* file);
 void z3zCons(FILE* file);
+void z3zConsSupplement(FILE* f);
 void z3zCont(FILE* file);
 void z3zLibre(FILE* file);
 void z3zFileOutput(FILE* file);

@@ -474,8 +474,55 @@ void z3zCons(FILE* file)
       fprintf(file, "%s", "^2=1,");
     }
 
-  fseek(file, -1, SEEK_CUR);
+  fprintf(file, "\n");
+
+  z3zConsSupplement(file);
+
+  fseek(file, -2, SEEK_CUR);
   fprintf(file, "%s", "\n      ];\n\n");
+}
+
+void z3zConsSupplement(FILE* f)
+{
+  for (int i = 0; i < partab->len; i++)
+    {
+      automaton *at = GET_PAR(partab, i);
+      if (at->sttab->len > 1)
+	{
+	  state *st = GET_STATE(at->sttab, 0);
+	  fprintf(f, "      (%s", st->name);
+	  for (int j = 1; j < at->sttab->len; j++)
+	    {
+	      state *st = GET_STATE(at->sttab, j);
+	      fprintf(f, " or %s", st->name);
+
+	    }
+	  fprintf(f, ")=1;\n");
+
+	  fprintf(f, "      (");
+
+	  state *st1 = GET_STATE(at->sttab, 0);
+	  state *st2 = GET_STATE(at->sttab, 1);
+
+	  fprintf(f, "(%s and %s)", st1->name, st2->name);
+
+	  for (int j = 0; j < at->sttab->len; j++)
+	    {
+	      state *st1 = GET_STATE(at->sttab, j);
+
+	      for (int k = j+2; k < at->sttab->len; k++)
+		{
+		  state *st2 = GET_STATE(at->sttab, k);
+		  fprintf(f, " or (%s and %s)", st1->name, st2->name);
+		}
+	    }
+
+	  fprintf(f, ")=-1;\n");
+	}
+    }
+
+  //  fseek(f, -2, SEEK_CUR);
+
 }
 
 void z3zCont(FILE* file)
