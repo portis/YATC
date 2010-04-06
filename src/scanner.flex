@@ -1,4 +1,4 @@
-%option noyywrap yylineno
+%option noyywrap yylineno case-insensitive
 %x COMMENT
 
 %{

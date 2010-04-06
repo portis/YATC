@@ -497,7 +497,7 @@ void z3zConsSupplement(FILE* f)
 	      fprintf(f, " or %s", st->name);
 
 	    }
-	  fprintf(f, ")=1;\n");
+	  fprintf(f, ")=1,\n");
 
 	  fprintf(f, "      (");
 
@@ -517,7 +517,7 @@ void z3zConsSupplement(FILE* f)
 		}
 	    }
 
-	  fprintf(f, ")=-1;\n");
+	  fprintf(f, ")=-1,\n");
 	}
     }
 

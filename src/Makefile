@@ -1,5 +1,5 @@
 
-CC = clang -O2 -std=c99 -D_POSIX_SOURCE
+CC = clang -g -O0 -std=c99 -D_POSIX_SOURCE
 #CC = gcc
 CFLAGS = `pkg-config --cflags glib-2.0`
 LIBS = `pkg-config --libs glib-2.0` 

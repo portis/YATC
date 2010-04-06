@@ -1,3 +1,7 @@
 YATC is Yet Another TARGOS Compiler
 
 It can compile TARGOS files into z3z or ec formats.
+
+yatc XX.targos -z3z -o XX.z3z
+
+yatc XX.targos -ecpreuve -o XX.ec

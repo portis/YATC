@@ -30,7 +30,7 @@ void print_usage()
   printf("    -o, --outfile: output into the specific file\n");
 }
 
-int main(int argc, char *argv[])
+int main2(int argc, char *argv[])
 {
 
   gboolean z3zout = 0;
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
   int c;
   char *outfilename;
   SysInit();
-  //    yydebug=1;
+  yydebug=1;
 
   while (1)
     {
@@ -94,6 +94,126 @@ int main(int argc, char *argv[])
 	  perror("M1p.targos not found!");
 	  abort();
 	}
+    }
+
+  yyparse();
+
+  reorder_system();
+
+  if ((z3z_flag == 1) && (ec_flag == 1))
+    {
+      perror("cannot output z3z and ec files at the same time\n");
+      abort();
+    }
+
+  if (z3z_flag == 1)
+    {
+      FILE* z3zfile;
+      if (outfile_flag == 1)
+	{
+	  if (!(z3zfile=fopen(outfilename, "w")))
+	    {
+	      perror("open output file error\n");
+	      abort();
+	    }
+	}
+      else
+	z3zfile = stdout;
+
+      z3zFileOutput(z3zfile);
+    }
+
+  if (ec_flag == 1)
+    {
+      FILE* ecfile;
+      FILE* itffile;
+      char *itffilename;
+
+      if (outfile_flag == 1)
+	{
+	  if (!(ecfile=fopen(outfilename, "w")))
+	    {
+	      perror("open output file error\n");
+	      abort();
+	    }
+
+	  itffilename = g_strconcat(outfilename, ".itf", NULL);
+
+	  if (!(itffile=fopen(itffilename, "w")))
+	    {
+	      perror("open output file error");
+	      abort();
+	    }
+	  ecitfInputs(itffile);
+	  ecitfOutputs(itffile);
+	}
+      else
+	ecfile = stdout;
+      ecNode(ecfile);
+      
+    }
+  return 0;
+}
+
+int main(int argc, char *argv[])
+{
+
+  gboolean z3zout = 0;
+  gboolean ecout = 0;
+  int c;
+  char *infilename;
+  char *outfilename;
+
+  SysInit();
+  //yydebug=1;
+
+  char *ops;
+
+  if (argc < 2)
+    {
+      perror("Please give an input file name");
+    }
+
+  infilename = g_strdup(argv[1]);
+  if (infilename == NULL)
+    {
+      perror("Please give an input file name");
+    }
+
+  int i = 2;
+
+  while ((ops=argv[i])!=NULL)
+    {
+
+      if (!strcmp(ops, "-z3z"))
+	{
+	  puts("z3z output\n");
+	  z3z_flag = 1;
+	}
+      else if (!strcmp(ops, "-ecpreuve"))
+	{
+	  puts("ecpreuve output\n");
+	  ec_flag = 1;
+	}
+      else if (!strcmp(ops, "-o"))
+	{
+	  outfile_flag = 1;
+	  outfilename = g_strdup(argv[i+1]);
+	  //	  printf("file %s\n", outfilename);
+	}
+      else if (!strcmp(ops, "?"))
+	{
+	  print_usage();	  
+	}
+      //	else
+      //	  abort();
+	i++;
+    }
+
+  if (!(yyin = fopen(infilename, "r")))
+    {
+      fprintf(stderr, "Cannot open input file %s!", infilename);
+      abort();
     }
 
   yyparse();
