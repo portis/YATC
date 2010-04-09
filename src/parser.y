@@ -80,18 +80,15 @@ t_autohead : T_AUTOMATON T_ID { cura = automaton_new($2); autotab_add(cura); }
 t_states : T_STATES t_state_list
 ;
 
-t_state_list : t_state_init t_state_normal_list
-;
-
-t_state_init : T_ID T_INIT '[' ']' { curs = state_new($1, TRUE); automaton_add_state(cura, curs); } 
+t_state_list :
+  T_ID T_INIT '[' ']' { curs = state_new($1, TRUE); automaton_add_state(cura, curs); } 
 | T_ID T_INIT '[' t_ooo ']' { curs = state_new($1, TRUE); automaton_add_state(cura, curs); addOutputFinal(curs, cura, $<array>4); } 
-;
-
-t_state_normal_list :
-T_ID '[' ']' { curs = state_new($1, FALSE); automaton_add_state(cura, curs); }
+| T_ID T_INIT '[' ']' t_state_list { curs = state_new($1, TRUE); automaton_add_state(cura, curs); } 
+| T_ID T_INIT '[' t_ooo ']' t_state_list { curs = state_new($1, TRUE); automaton_add_state(cura, curs); addOutputFinal(curs, cura, $<array>4); } 
+| T_ID '[' ']' { curs = state_new($1, FALSE); automaton_add_state(cura, curs); }
 | T_ID '[' t_ooo ']' { curs = state_new($1, FALSE); automaton_add_state(cura, curs); addOutputFinal(curs, cura, $<array>3); }
-| T_ID '[' ']' t_state_normal_list { curs = state_new($1, FALSE); automaton_add_state(cura, curs); }
-| T_ID '[' t_ooo ']' t_state_normal_list { curs = state_new($1, FALSE); automaton_add_state(cura, curs); addOutputFinal(curs, cura, $<array>3); }
+| T_ID '[' ']' t_state_list { curs = state_new($1, FALSE); automaton_add_state(cura, curs); }
+| T_ID '[' t_ooo ']' t_state_list { curs = state_new($1, FALSE); automaton_add_state(cura, curs); addOutputFinal(curs, cura, $<array>3); }
 ;
 
 t_ooo :  T_ID '=' t_out_expr ';'  { $<array>$ = findOutput($1, $<text>3); } 

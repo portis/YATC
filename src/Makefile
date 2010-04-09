@@ -229,6 +229,30 @@ parser.tab.c.s:
 	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.s
 .PHONY : parser.tab.c.s
 
+validate.o: validate.c.o
+.PHONY : validate.o
+
+# target to build an object file
+validate.c.o:
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/validate.c.o
+.PHONY : validate.c.o
+
+validate.i: validate.c.i
+.PHONY : validate.i
+
+# target to preprocess a source file
+validate.c.i:
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/validate.c.i
+.PHONY : validate.c.i
+
+validate.s: validate.c.s
+.PHONY : validate.s
+
+# target to generate assembly for a file
+validate.c.s:
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/validate.c.s
+.PHONY : validate.c.s
+
 z3z.o: z3z.c.o
 .PHONY : z3z.o
 
@@ -277,6 +301,9 @@ help:
 	@echo "... parser.tab.o"
 	@echo "... parser.tab.i"
 	@echo "... parser.tab.s"
+	@echo "... validate.o"
+	@echo "... validate.i"
+	@echo "... validate.s"
 	@echo "... z3z.o"
 	@echo "... z3z.i"
 	@echo "... z3z.s"

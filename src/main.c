@@ -3,6 +3,7 @@
 #include "types.h"
 #include "z3z.h"
 #include "ecitf.h"
+#include "validate.h"
 #include "YatcConfig.h"
 
 
@@ -189,43 +190,41 @@ int main(int argc, char *argv[])
 
       if (!strcmp(ops, "-z3z"))
 	{
-	  puts("z3z output\n");
 	  z3z_flag = 1;
 	}
       else if (!strcmp(ops, "-ecpreuve"))
 	{
-	  puts("ecpreuve output\n");
 	  ec_flag = 1;
 	}
       else if (!strcmp(ops, "-o"))
 	{
 	  outfile_flag = 1;
 	  outfilename = g_strdup(argv[i+1]);
-	  //	  printf("file %s\n", outfilename);
 	}
       else if (!strcmp(ops, "?"))
 	{
 	  print_usage();	  
 	}
-      //	else
-      //	  abort();
+
 	i++;
     }
 
   if (!(yyin = fopen(infilename, "r")))
     {
       fprintf(stderr, "Cannot open input file %s!", infilename);
-      abort();
+      exit(EXIT_FAILURE);
     }
 
   yyparse();
+
+  g_ptr_array_foreach(partab, (GFunc)check_init_state, NULL);
 
   reorder_system();
 
   if ((z3z_flag == 1) && (ec_flag == 1))
     {
       perror("cannot output z3z and ec files at the same time\n");
-      abort();
+      exit(EXIT_FAILURE);
     }
 
   if (z3z_flag == 1)
@@ -236,7 +235,7 @@ int main(int argc, char *argv[])
 	  if (!(z3zfile=fopen(outfilename, "w")))
 	    {
 	      perror("open output file error\n");
-	      abort();
+	      exit(EXIT_FAILURE);
 	    }
 	}
       else
@@ -256,7 +255,7 @@ int main(int argc, char *argv[])
 	  if (!(ecfile=fopen(outfilename, "w")))
 	    {
 	      perror("open output file error\n");
-	      abort();
+	      exit(EXIT_FAILURE);
 	    }
 
 	  itffilename = g_strconcat(outfilename, ".itf", NULL);
@@ -264,7 +263,7 @@ int main(int argc, char *argv[])
 	  if (!(itffile=fopen(itffilename, "w")))
 	    {
 	      perror("open output file error");
-	      abort();
+	      exit(EXIT_FAILURE);
 	    }
 	  ecitfInputs(itffile);
 	  ecitfOutputs(itffile);
