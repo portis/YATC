@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ming/source/bison/YATC
+CMAKE_SOURCE_DIR = /home/ming/source/YATC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ming/source/bison/YATC
+CMAKE_BINARY_DIR = /home/ming/source/YATC
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,14 +66,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/ming/source/bison/YATC && $(CMAKE_COMMAND) -E cmake_progress_start /home/ming/source/bison/YATC/CMakeFiles /home/ming/source/bison/YATC/src/CMakeFiles/progress.marks
-	cd /home/ming/source/bison/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ming/source/bison/YATC/CMakeFiles 0
+	cd /home/ming/source/YATC && $(CMAKE_COMMAND) -E cmake_progress_start /home/ming/source/YATC/CMakeFiles /home/ming/source/YATC/src/CMakeFiles/progress.marks
+	cd /home/ming/source/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ming/source/YATC/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/ming/source/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -82,22 +82,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ming/source/bison/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/ming/source/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/ming/source/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ming/source/bison/YATC && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ming/source/YATC && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/yatc.dir/rule:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/yatc.dir/rule
+	cd /home/ming/source/YATC && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/yatc.dir/rule
 .PHONY : src/CMakeFiles/yatc.dir/rule
 
 # Convenience name for target.
@@ -106,7 +106,7 @@ yatc: src/CMakeFiles/yatc.dir/rule
 
 # fast build rule for target.
 yatc/fast:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/build
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/build
 .PHONY : yatc/fast
 
 ecitf.o: ecitf.c.o
@@ -114,7 +114,7 @@ ecitf.o: ecitf.c.o
 
 # target to build an object file
 ecitf.c.o:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/ecitf.c.o
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/ecitf.c.o
 .PHONY : ecitf.c.o
 
 ecitf.i: ecitf.c.i
@@ -122,7 +122,7 @@ ecitf.i: ecitf.c.i
 
 # target to preprocess a source file
 ecitf.c.i:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/ecitf.c.i
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/ecitf.c.i
 .PHONY : ecitf.c.i
 
 ecitf.s: ecitf.c.s
@@ -130,7 +130,7 @@ ecitf.s: ecitf.c.s
 
 # target to generate assembly for a file
 ecitf.c.s:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/ecitf.c.s
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/ecitf.c.s
 .PHONY : ecitf.c.s
 
 funcs.o: funcs.c.o
@@ -138,7 +138,7 @@ funcs.o: funcs.c.o
 
 # target to build an object file
 funcs.c.o:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/funcs.c.o
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/funcs.c.o
 .PHONY : funcs.c.o
 
 funcs.i: funcs.c.i
@@ -146,7 +146,7 @@ funcs.i: funcs.c.i
 
 # target to preprocess a source file
 funcs.c.i:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/funcs.c.i
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/funcs.c.i
 .PHONY : funcs.c.i
 
 funcs.s: funcs.c.s
@@ -154,7 +154,7 @@ funcs.s: funcs.c.s
 
 # target to generate assembly for a file
 funcs.c.s:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/funcs.c.s
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/funcs.c.s
 .PHONY : funcs.c.s
 
 lexer.o: lexer.c.o
@@ -162,7 +162,7 @@ lexer.o: lexer.c.o
 
 # target to build an object file
 lexer.c.o:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/lexer.c.o
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/lexer.c.o
 .PHONY : lexer.c.o
 
 lexer.i: lexer.c.i
@@ -170,7 +170,7 @@ lexer.i: lexer.c.i
 
 # target to preprocess a source file
 lexer.c.i:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/lexer.c.i
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/lexer.c.i
 .PHONY : lexer.c.i
 
 lexer.s: lexer.c.s
@@ -178,7 +178,7 @@ lexer.s: lexer.c.s
 
 # target to generate assembly for a file
 lexer.c.s:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/lexer.c.s
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/lexer.c.s
 .PHONY : lexer.c.s
 
 main.o: main.c.o
@@ -186,7 +186,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/main.c.o
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -194,7 +194,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/main.c.i
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -202,7 +202,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/main.c.s
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/main.c.s
 .PHONY : main.c.s
 
 parser.tab.o: parser.tab.c.o
@@ -210,7 +210,7 @@ parser.tab.o: parser.tab.c.o
 
 # target to build an object file
 parser.tab.c.o:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.o
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.o
 .PHONY : parser.tab.c.o
 
 parser.tab.i: parser.tab.c.i
@@ -218,7 +218,7 @@ parser.tab.i: parser.tab.c.i
 
 # target to preprocess a source file
 parser.tab.c.i:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.i
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.i
 .PHONY : parser.tab.c.i
 
 parser.tab.s: parser.tab.c.s
@@ -226,7 +226,7 @@ parser.tab.s: parser.tab.c.s
 
 # target to generate assembly for a file
 parser.tab.c.s:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.s
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/parser.tab.c.s
 .PHONY : parser.tab.c.s
 
 z3z.o: z3z.c.o
@@ -234,7 +234,7 @@ z3z.o: z3z.c.o
 
 # target to build an object file
 z3z.c.o:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/z3z.c.o
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/z3z.c.o
 .PHONY : z3z.c.o
 
 z3z.i: z3z.c.i
@@ -242,7 +242,7 @@ z3z.i: z3z.c.i
 
 # target to preprocess a source file
 z3z.c.i:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/z3z.c.i
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/z3z.c.i
 .PHONY : z3z.c.i
 
 z3z.s: z3z.c.s
@@ -250,7 +250,7 @@ z3z.s: z3z.c.s
 
 # target to generate assembly for a file
 z3z.c.s:
-	cd /home/ming/source/bison/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/z3z.c.s
+	cd /home/ming/source/YATC && $(MAKE) -f src/CMakeFiles/yatc.dir/build.make src/CMakeFiles/yatc.dir/z3z.c.s
 .PHONY : z3z.c.s
 
 # Help Target
@@ -291,6 +291,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ming/source/bison/YATC && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ming/source/YATC && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

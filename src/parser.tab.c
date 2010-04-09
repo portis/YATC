@@ -111,11 +111,11 @@
 
 
 /* Line 189 of yacc.c  */
-#line 115 "parser.tab.c"
+#line 115 "/home/ming/source/YATC/src/parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 1
+# define YYDEBUG 0
 #endif
 
 /* Enabling verbose error messages.  */
@@ -181,7 +181,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 185 "parser.tab.c"
+#line 185 "/home/ming/source/YATC/src/parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -193,7 +193,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 197 "parser.tab.c"
+#line 197 "/home/ming/source/YATC/src/parser.tab.c"
 
 #ifdef short
 # undef short
@@ -1763,7 +1763,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 1767 "parser.tab.c"
+#line 1767 "/home/ming/source/YATC/src/parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
